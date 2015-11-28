@@ -21,4 +21,8 @@ VideoList.defaultProps = {
             {name: " Writing our first component" } ]
 };
 
+VideoList.propTypes = {
+  videos: React.PropTypes.array.isRequired
+};
+
 export default VideoList
