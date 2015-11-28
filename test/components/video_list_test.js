@@ -1,5 +1,6 @@
 import expect from 'expect.js';
 import React from 'react/addons'
+import sinon from "sinon"
 import Video from "../../src/components/video"
 import VideoList from "../../src/components/video_list"
 const { TestUtils } = React.addons;
@@ -16,10 +17,6 @@ let render = (component) => {
 };
 
 describe("VideoList", () => {
-  it("is defined", () => {
-    expect(VideoList).not.to.be(undefined);
-  });
-
   it("renders when given an array", () => {
     let videoList = render(<VideoList videos={videos}/>);
     expect(videoList.type).to.be('div');
@@ -27,13 +24,11 @@ describe("VideoList", () => {
   });
 
   it("requires videos to be an array", () => {
-    // TODO: require sinon
-    let called = false;
-    console.error = () => called = true;
+    let spy = sinon.spy(console, "error")
     let notArray = { map: function() {} }
 
     render(<VideoList videos={ notArray }/>);
 
-    expect(called).to.be(true);
+    expect(spy.called).to.be(true);
   })
 });
