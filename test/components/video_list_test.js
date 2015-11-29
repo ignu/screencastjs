@@ -1,13 +1,13 @@
 import expect from 'expect.js';
-import React from 'react/addons'
+import React from 'react'
 import sinon from "sinon"
 import Video from "../../src/components/video"
 import VideoList from "../../src/components/video_list"
-const { TestUtils } = React.addons;
+import TestUtils from 'react-addons-test-utils';
 
 const videos = [
-  { name: "Great Video" },
-  { name: "Terrible Video" }
+  { id: 1, name: "Great Video" },
+  { id: 2, name: "Terrible Video" }
 ];
 
 let render = (component) => {
