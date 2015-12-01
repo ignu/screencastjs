@@ -4,11 +4,16 @@ import app from '../server'
 
 describe("GET /videos", () => {
   it("returns an array", (done) => {
-
     request(app)
       .get('/api/videos')
       .set('Accept', 'application/json')
       .expect(200, done)
       .expect('Content-Type', /json/)
+  })
+
+  it("sends public files", (done) => {
+    request(app)
+      .get('/index.html')
+      .expect(200, done)
   })
 })
