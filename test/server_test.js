@@ -7,8 +7,11 @@ describe("GET /videos", () => {
     request(app)
       .get('/api/videos')
       .set('Accept', 'application/json')
-      .expect(200, done)
       .expect('Content-Type', /json/)
+      .end((err, res) => {
+        expect(res.body.length).to.eql(2)
+        done()
+      })
   })
 
   it("sends public files", (done) => {
