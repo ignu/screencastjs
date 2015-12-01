@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ignu/screencastjs#readme",
   "dependencies": {
+    "express": "^4.13.3",
     "mocha": "^2.3.4",
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
@@ -34,6 +35,7 @@
     "babelify": "^7.2.0",
     "expect.js": "^0.3.1",
     "react-addons-test-utils": "^0.14.3",
-    "sinon": "^1.17.2"
+    "sinon": "^1.17.2",
+    "supertest": "^1.1.0"
   }
 }
