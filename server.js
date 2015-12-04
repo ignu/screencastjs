@@ -5,8 +5,20 @@ import mongoose from 'mongoose'
 let app = express();
 
 mongoose.connect('mongodb://localhost/myappdatabase');
+import sassMiddleware from 'node-sass-middleware'
+
+let app = express();
+
 
 app.use(express.static("public"))
+
+app.use(sassMiddleware({
+  src: path.join(__dirname, "sass"),
+  dest: path.join(__dirname, 'public'),
+  debug: true,
+  outputStyle: 'compressed',
+  prefix:  '/css'
+});
 
 app.get('/api/videos', (req, res) => {
   res.send(videos)
