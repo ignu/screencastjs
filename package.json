@@ -22,6 +22,7 @@
   "homepage": "https://github.com/ignu/screencastjs#readme",
   "dependencies": {
     "express": "^4.13.3",
+    "isomorphic-fetch": "^2.2.0",
     "mocha": "^2.3.4",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
