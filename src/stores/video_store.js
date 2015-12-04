@@ -1,15 +1,14 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
-const videos = {
-  videos: [ { id: 1, name: " Setting up your environment (store)" },
-            { id: 2, name: " Writing our first component (store)" } ]
+const defaultState = {
+  loading: true
 }
 
-const videoStore = (state = videos, action) => {
+const videoStore = (state = defaultState, action) => {
   switch (action.type) {
   case "RECEIVE_VIDEOS" :
-    return Object.assign({}, state, { videos: action.videos })
+    return Object.assign({}, state, { videos: action.videos, loading: false })
   default:
     return state
   }
