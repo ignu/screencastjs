@@ -1,7 +1,10 @@
 import express from 'express'
 
 import videos from './data/videos'
+import mongoose from 'mongoose'
 let app = express();
+
+mongoose.connect('mongodb://localhost/myappdatabase');
 
 app.use(express.static("public"))
 
