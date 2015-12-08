@@ -26,7 +26,7 @@
     "kerberos": "0.0.17",
     "mocha": "^2.3.4",
     "mongodb": "^2.0.49",
-    "mongoose": "^4.2.9",
+    "mongoose": "4.1.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",

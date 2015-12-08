@@ -1,24 +1,25 @@
 import express from 'express'
 
+import mongoose, { Schema } from 'mongoose'
 import videos from './data/videos'
-import mongoose from 'mongoose'
-let app = express();
 
-mongoose.connect('mongodb://localhost/myappdatabase');
-import sassMiddleware from 'node-sass-middleware'
+let options = {
+  server: {
+    auto_reconnect: true,
+    socketOptions : {
+      keepAlive: 1
+    }
+  }
+}
+
+mongoose.connect('mongodb://localhost/screencasts', options);
+
+import VideoModel from './server/models/video'
 
 let app = express();
 
 
 app.use(express.static("public"))
-
-app.use(sassMiddleware({
-  src: path.join(__dirname, "sass"),
-  dest: path.join(__dirname, 'public'),
-  debug: true,
-  outputStyle: 'compressed',
-  prefix:  '/css'
-});
 
 app.get('/api/videos', (req, res) => {
   res.send(videos)
