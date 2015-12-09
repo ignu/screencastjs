@@ -1,11 +1,16 @@
 import express from 'express'
 
 import videos from './data/videos'
-
+import Firebase from "firebase"
 import sassMiddleware from 'node-sass-middleware'
 import path from 'path'
+import dotenv from "dotenv"
+import R from "ramda"
 
 let app = express();
+dotenv.load();
+
+let db = new Firebase(process.env.FIREBASE_URL)
 
 app.use(express.static("public"))
 
@@ -18,8 +23,19 @@ app.use(sassMiddleware({
   prefix:  '/css'
 }))
 
+
+let mapVideosFromFirebase = (videoObject) => {
+  let keys = R.keys(videoObject)
+  let makeVideoObject = (key) => R.merge(videoObject[key], { id: key })
+  return R.map(makeVideoObject, keys)
+}
+
 app.get('/api/videos', (req, res) => {
-  res.send(videos)
+  db.child("videos").on("value", (snapshot) => {
+    // HACK: not sure why videos contains an empty element
+    let videos = mapVideosFromFirebase(snapshot.val())
+    res.send(videos)
+  })
 })
 
 // TODO: better test for if we're running tests...
