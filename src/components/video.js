@@ -19,10 +19,12 @@ class Video extends React.Component {
 
     return <div>
       <div>{ video.name }</div>
+
       <VideoJs
         plugins = {plugins}
         reportingCallback = {onReport}
         src={[`/videos/episode-${video.id}.mp4` ]}/>
+
     </div>
   }
 }
