@@ -4,15 +4,23 @@
   <head>
     <meta charset="utf-8" />
     <title>Screencasts</title>
+    <link rel="stylesheet" type="text/css" href="css/skeleton/normalize.css"/> 
+    <link rel="stylesheet" type="text/css" href="css/skeleton/skeleton.css"/> 
     <link rel="stylesheet" type="text/css" href="/main.css"/> 
   </head>
 
   <body>
-    <div class="main-menu-icon visible-xs">
-      <div id="#header">
-        <h1>ReactCasts</h1>
+    <header id="#header" class="row">
+      <div class="eight columns"><h1>ReactCasts</h1></div>
+      <div id="nav" class="four columns">
+        <ul class="row">
+          <li class="three columns"></li>
+          <li class="three columns"><a href="#">Videos</a></li>
+          <li class="three columns"><a href="#">Sign up</a></li>
+          <li class="three columns"><a href="#">About</a></li>
+        </ul>
       </div>
-    </div>
+    </header>
     <div id="app"></div>
     <script src="bundle.js"></script>
   </body>

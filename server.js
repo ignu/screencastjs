@@ -13,6 +13,7 @@ app.use(sassMiddleware({
   src: path.join(__dirname, "public/css"),
   dest: path.join(__dirname, 'public'),
   debug: true,
+  force: true,
   outputStyle: 'compressed',
   prefix:  '/css'
 }))
