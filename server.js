@@ -1,6 +1,5 @@
 import express from 'express'
 
-import videos from './data/videos'
 import Firebase from "firebase"
 import sassMiddleware from 'node-sass-middleware'
 import path from 'path'

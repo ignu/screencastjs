@@ -17,12 +17,16 @@ class Video extends React.Component {
   render() {
     const video = this.props.video
 
-    return <div>
-      <div>{ video.name }</div>
+    return <div className="video-wrapper">
+
+      <div className="title">{ video.name }</div>
 
       <VideoJs
         plugins = {plugins}
+        resize={ false }
+        startWithControlBar = {true}
         reportingCallback = {onReport}
+        width="640"
         src={[`/videos/episode-${video.id}.mp4` ]}/>
 
     </div>
