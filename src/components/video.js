@@ -16,6 +16,7 @@ const plugins = [{name: 'myPlugin', func: plugin}];
 class Video extends React.Component {
   render() {
     const video = this.props.video
+    let url = `/videos/episode-${video.id}.mp4`
 
     return <div className="video-wrapper">
 
@@ -27,7 +28,9 @@ class Video extends React.Component {
         startWithControlBar = {true}
         reportingCallback = {onReport}
         width="640"
-        src={[`/videos/episode-${video.id}.mp4` ]}/>
+        src={[ url ]}/>
+
+      <a href={ url }>Download (.mp4)</a>
 
     </div>
   }
