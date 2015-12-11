@@ -4,13 +4,19 @@
    "env": {
     "development": {
       "plugins": [
-          ["transform-class-properties", {
-          "transforms": [{
-            "transform": "livereactload/babel-transform",
-            "imports": ["react"]
-          }]
-        }]
-      ]
+          ["transform-class-properties",
+           {"transforms": [{
+              "transform": "livereactload/babel-transform",
+              "imports": ["react"]
+            }]
+           }
+           , {"transforms": [{
+             "transform": "react-transform-hmr",
+               "imports": ["react"],
+               "locals": ["module"]
+           }]}
+        ]
+      ],
     }
   }
 }
