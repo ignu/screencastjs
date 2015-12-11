@@ -4,8 +4,7 @@ const { Component } = React;
 
 class App extends Component {
   render() {
-    return
-      <div className="wrapper">
+    return <div className="wrapper">
         <header id="#header" className="row">
           <div className="eight columns"><h1>ReactCasts.tv</h1></div>
           <div id="nav" className="four columns">

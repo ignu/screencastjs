@@ -15,6 +15,6 @@ let render = (component) => {
 describe("App", () => {
   it("renders", () => {
     let app = render(<App/>)
-    expect(typeof app.type).to.be("function")
+    expect(app.type).to.be("div")
   })
 })

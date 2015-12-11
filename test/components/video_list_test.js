@@ -21,7 +21,7 @@ describe("VideoList", () => {
   it("renders when given an array", () => {
     let videoList = render(<VideoList videos={videos}/>);
     expect(videoList.type).to.be('div');
-    expect(videoList.props.children).to.have.length(2);
+    expect(videoList.props.children[1].length).to.be(2);
   });
 
   it("requires videos to be an array", () => {
