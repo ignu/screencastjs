@@ -37,8 +37,26 @@ export default function saveUser(user) {
     if(errors.length) { return dispatch(errorsFor(errors))}
 
     dispatch(submitPost())
-    return fetch(`./api/users`, { method: "POST"})
+    return fetch(`./api/users`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user) })
       .then(response => response.json())
-      .then(json => dispatch(postComplete(json)))
+      .then((json) => {
+        if (json.error) {
+          switch(json.error.code) {
+          case "EMAIL_TAKEN":
+            return dispatch(errorsFor(["This email is already in use."]))
+          default:
+            return dispatch(errorsFor([json.error.code]))
+          }
+        }
+        else {
+          dispatch(postComplete(json))
+        }
+      })
   }
 }

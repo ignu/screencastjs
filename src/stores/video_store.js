@@ -12,7 +12,7 @@ const videoStore = (state = defaultState, action) => {
 
   switch (action.type) {
   case "ERROR" :
-    return Object.assign({}, state, { errors: action.errors })
+    return Object.assign({}, state, { savingUser: false, errors: action.errors })
   case "SAVING_USER" :
     return Object.assign({}, state, { savingUser: true, errors: [] })
   case "SAVED_USER" :

@@ -5,6 +5,7 @@ import sassMiddleware from 'node-sass-middleware'
 import path from 'path'
 import dotenv from "dotenv"
 import R from "ramda"
+import bodyParser from "body-parser"
 
 let app = express();
 dotenv.load();
@@ -12,6 +13,11 @@ dotenv.load();
 let db = new Firebase(process.env.FIREBASE_URL)
 
 app.use(express.static("public"))
+
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use(sassMiddleware({
   src: path.join(__dirname, "public/css"),
@@ -38,7 +44,19 @@ app.get('/api/videos', (req, res) => {
 })
 
 app.post('/api/users', (req, res) => {
-  res.send({})
+  let user = {
+    email    : req.body.email,
+    password : req.body.password
+  }
+
+  db.createUser(user, (error, userData) => {
+    if (error) {
+      res.send({ error: error})
+    } else {
+      user.id = userData.uid
+      res.send(user)
+    }
+  })
 })
 
 // TODO: better test for if we're running tests...
