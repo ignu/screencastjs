@@ -37,6 +37,10 @@ app.get('/api/videos', (req, res) => {
   })
 })
 
+app.post('/api/users', (req, res) => {
+  res.send({})
+})
+
 // TODO: better test for if we're running tests...
 if(process.env.npm_lifecycle_event != "test") {
   const server = app.listen(8000, () => {

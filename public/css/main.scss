@@ -36,6 +36,14 @@ a {
   margin-bottom: 25px;
 }
 
+.error {
+  border: 1px solid $red;
+  padding: 15px;
+  background-color: #FFAAAA;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 
 /* HACK: move to CSSify */
 
