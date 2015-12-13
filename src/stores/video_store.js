@@ -7,7 +7,7 @@ const defaultState = {
   errors: []
 }
 
-const videoStore = (state = defaultState, action) => {
+export const reducer = (state = defaultState, action = "DEFAULT") => {
   if (console.debug) console.debug("action ---> ", action)
 
   switch (action.type) {
@@ -28,4 +28,4 @@ const createStoreWithMiddleware = applyMiddleware(
   thunk
 )(createStore);
 
-export default createStoreWithMiddleware(videoStore)
+export default createStoreWithMiddleware(reducer)
