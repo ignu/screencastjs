@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import history from '../history'
 
 export const SAVING_USER = 'SAVING_USER'
 export const SAVED_USER = 'SAVED_USER'
@@ -56,6 +57,7 @@ export default function saveUser(user) {
         }
         else {
           dispatch(postComplete(json))
+          history.replaceState(null, '/')
         }
       })
   }

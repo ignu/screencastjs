@@ -1,4 +1,5 @@
 import React from 'react';
+import history from './history'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import App from "../src/components/app"
@@ -9,7 +10,7 @@ import { Router, Route } from 'react-router'
 
 render((
     <Provider store={videoStore}>
-      <Router>
+      <Router history={ history }>
         <Route path="/" component={App}>
           <Route path="videos" component={VideoListLoader} />
           <Route path="register" component={SignUpForm} />
