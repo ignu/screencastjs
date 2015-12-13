@@ -59,6 +59,18 @@ app.post('/api/users', (req, res) => {
   })
 })
 
+
+// HACK: make react-router isomorphic
+app.get('/videos', (req, res) => {
+  let index = path.join(__dirname, "public/index.html")
+  res.sendFile(index)
+})
+
+app.get('/register', (req, res) => {
+  let index = path.join(__dirname, "public/index.html")
+  res.sendFile(index)
+})
+
 // TODO: better test for if we're running tests...
 if(process.env.npm_lifecycle_event != "test") {
   const server = app.listen(8000, () => {

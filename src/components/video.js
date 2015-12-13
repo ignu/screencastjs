@@ -15,7 +15,7 @@ const plugins = [{name: 'myPlugin', func: plugin}];
 class Video extends React.Component {
   render() {
     const video = this.props.video
-    let url = `/videos/episode-${video.id}.mp4`
+    let url = `/video_source/episode-${video.id}.mp4`
 
     return <div className="video-wrapper">
 

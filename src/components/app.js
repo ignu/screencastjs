@@ -12,12 +12,15 @@ class App extends Component {
               <li className="three columns">
                 <Link to="/videos">Videos</Link>
               </li>
+
               <li className="three columns">
                 <a href="#">About</a>
               </li>
+
               <li className="three columns">
                 <Link to="/register" className="button button-primary">Sign Up</Link>
               </li>
+
               <li className="three columns"></li>
             </ul>
           </div>

@@ -32,5 +32,5 @@ node_modules
 
 public/bundle.js
 public/main.css
-public/videos
+public/video_source
 build_flow
