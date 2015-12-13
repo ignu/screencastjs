@@ -1,5 +1,4 @@
 import React from 'react';
-import Controls from 'react-h5-video'
 import VideoJs from 'react-videojs'
 
 const onReport = ({eventName}) => {

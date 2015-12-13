@@ -34,7 +34,7 @@ let validateUser = (user) => {
 export default function saveUser(user) {
   return dispatch => {
     let errors = validateUser(user);
-    if(errors.length) { return dispatch(errorsFor(errors))}
+    if(errors.length) { return dispatch(errorsFor(errors)) }
 
     dispatch(submitPost())
     return fetch(`./api/users`, {
