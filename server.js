@@ -10,7 +10,8 @@ import bodyParser from "body-parser"
 let app = express();
 dotenv.load();
 
-let db = new Firebase(process.env.FIREBASE_URL)
+let firebaseUrl = process.env.FIREBASE_URL
+let db = new Firebase(firebaseUrl)
 
 app.use(express.static("public"))
 
@@ -46,15 +47,20 @@ app.get('/api/videos', (req, res) => {
 app.post('/api/users', (req, res) => {
   let user = {
     email    : req.body.email,
-    password : req.body.password
+    password : req.body.password,
+    receiveEmails: true
   }
 
   db.createUser(user, (error, userData) => {
     if (error) {
-      res.send({ error: error})
+      console.log("-- ERROR --> ", error)
+      res.status(403).send({ error: error})
     } else {
       user.id = userData.uid
-      res.send(user)
+      let profileDb = new Firebase(`${firebaseUrl}/profiles/${user.id}`);
+      profileDb.set({email: user.email,
+                     receiveEmails: user.receiveEmails}, () => {
+                       res.send(user) })
     }
   })
 })

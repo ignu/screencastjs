@@ -33,4 +33,3 @@ describe("VideoList", () => {
     expect(spy.called).to.be(true);
   })
 });
-
