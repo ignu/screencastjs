@@ -3,7 +3,7 @@ import request from 'supertest'
 import app from '../server'
 
 describe("GET /videos", () => {
-  it("returns an array", (done) => {
+  it("returns an array @slow", (done) => {
     // TODO: mock this.
     request(app)
       .get('/api/videos')
