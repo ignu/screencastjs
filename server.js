@@ -48,7 +48,7 @@ app.post('/api/users', (req, res) => {
   let user = {
     email    : req.body.email,
     password : req.body.password,
-    receiveEmails: true
+    receiveEmails: req.body.receiveEmails
   }
 
   db.createUser(user, (error, userData) => {

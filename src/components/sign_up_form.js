@@ -30,7 +30,8 @@ class SignUpForm extends React.Component {
     e.preventDefault()
     let json = {
       email: this.refs.email.getDOMNode().value,
-      password: this.refs.password.getDOMNode().value
+      password: this.refs.password.getDOMNode().value,
+      receiveEmails: this.refs.receiveEmails.getDOMNode().checked
     }
     this.context.store.dispatch(saveUser(json))
   }
@@ -60,6 +61,10 @@ class SignUpForm extends React.Component {
 
         <label htmlFor="password">Password</label>
         <input ref="password" id="password" type="password" />
+
+        <div>
+          <input ref="receiveEmails" type="checkbox" name="emails" value="emails">I would like to receive emails about new views and JavaScript projects</input>
+        </div>
 
         { this.renderActions() }
       </form>
