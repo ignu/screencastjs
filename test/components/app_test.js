@@ -3,6 +3,7 @@ import React from 'react'
 import sinon from "sinon"
 import App from "../../src/components/app"
 import TestUtils from 'react-addons-test-utils';
+import VideoStore from "../../src/stores/video_store"
 
 
 // TODO: remove duplication.
@@ -14,7 +15,7 @@ let render = (component) => {
 
 describe("App", () => {
   it("renders", () => {
-    let app = render(<App/>)
-    expect(app.type).to.be("div")
+    let app = render(<App store={ VideoStore }/>)
+    expect(typeof app.type).to.be("function")
   })
 })
