@@ -1,8 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 const { Component } = React;
 
 class App extends Component {
+  renderRegisterButton() {
+    if(this.props.userId) {
+      return <li className="three columns">
+          <Link to="/register" className="button">Log Out</Link>
+        </li>
+    } else {
+      return <li className="three columns">
+          <Link to="/register" className="button button-primary">Sign Up</Link>
+        </li>
+    }
+  }
+
   render() {
     return <div className="wrapper">
         <header id="#header" className="row">
@@ -17,9 +30,7 @@ class App extends Component {
                 <a href="#">About</a>
               </li>
 
-              <li className="three columns">
-                <Link to="/register" className="button button-primary">Sign Up</Link>
-              </li>
+              { this.renderRegisterButton() }
 
               <li className="three columns"></li>
             </ul>
@@ -32,4 +43,8 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return { userId: state.userId }
+}
+
+export default connect(mapStateToProps)(App)

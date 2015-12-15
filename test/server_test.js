@@ -15,7 +15,8 @@ let deleteUser = (user, callback) => {
 
 let user = {
   email: "jon@nightswatch.net",
-  password: "nightswatch"
+  password: "nightswatch",
+  receiveEmails: true
 }
 
 describe("POST /api/users", function() {

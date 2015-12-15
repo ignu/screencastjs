@@ -28,11 +28,12 @@ describe("VideoStore's reducer", () => {
   describe("SAVED_USER", () => {
     it("returns a saving user state", () => {
       let state = {}
-      let action = { type: "SAVED_USER" }
+      let action = { type: "SAVED_USER", userId: "abc-123" }
 
       let newState = reducer(state, action)
 
       expect(newState.savingUser).to.be(false)
+      expect(typeof newState.userId).to.be("string")
     })
   })
 

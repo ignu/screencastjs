@@ -16,7 +16,7 @@ export const reducer = (state = defaultState, action = "DEFAULT") => {
   case "SAVING_USER" :
     return Object.assign({}, state, { savingUser: true, errors: [] })
   case "SAVED_USER" :
-    return Object.assign({}, state, { savingUser: false })
+    return Object.assign({}, state, { savingUser: false, userId: action.userId })
   case "RECEIVE_VIDEOS" :
     return Object.assign({}, state, { videos: action.videos, loading: false })
   default:
