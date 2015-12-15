@@ -31,6 +31,7 @@ node_modules
 .DS_Store
 
 public/bundle.js
-public/main.css
 public/video_source
+public/main.css.map
+.sass-cache
 build_flow

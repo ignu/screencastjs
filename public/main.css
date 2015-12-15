@@ -1,0 +1,74 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,300italic,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
+.clearfix {
+  clear: both; }
+
+body {
+  background-color: #323232;
+  padding: 20px !important;
+  color: #808080; }
+
+h1, h2, h3, h4 {
+  font-family: 'Raleway', Verdana, sans-serif;
+  color: #fff; }
+
+a {
+  color: #fff; }
+
+#nav {
+  float: right; }
+  #nav ul {
+    list-style-type: none; }
+
+.video-wrapper {
+  margin-bottom: 25px; }
+
+.error {
+  border: 1px solid #db325a;
+  padding: 15px;
+  background-color: #FFAAAA;
+  font-weight: bold;
+  margin-bottom: 10px; }
+
+/* HACK: move to CSSify */
+.react-spinner {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  top: 50%;
+  left: 50%; }
+
+form .react-spinner {
+  position: relative;
+  top: 20px;
+  left: 30px; }
+
+.react-spinner_bar {
+  -webkit-animation: react-spinner_spin 1.2s linear infinite;
+  -moz-animation: react-spinner_spin 1.2s linear infinite;
+  animation: react-spinner_spin 1.2s linear infinite;
+  border-radius: 5px;
+  background-color: white;
+  position: absolute;
+  width: 20%;
+  height: 7.8%;
+  top: -3.9%;
+  left: -10%; }
+
+@keyframes react-spinner_spin {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0.15; } }
+@-moz-keyframes react-spinner_spin {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0.15; } }
+@-webkit-keyframes react-spinner_spin {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0.15; } }
+
+/*# sourceMappingURL=main.css.map */

@@ -1,6 +1,5 @@
 import express from 'express'
 import Firebase from "firebase"
-import sassMiddleware from 'node-sass-middleware'
 import path from 'path'
 import dotenv from "dotenv"
 import R from "ramda"
@@ -17,15 +16,6 @@ app.use(express.static("public"))
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-
-app.use(sassMiddleware({
-  src: path.join(__dirname, "public/css"),
-  dest: path.join(__dirname, 'public'),
-  debug: true,
-  force: true,
-  outputStyle: 'compressed',
-  prefix:  '/css'
-}))
 
 let mapVideosFromFirebase = (videoObject) => {
   let keys = R.keys(videoObject)
