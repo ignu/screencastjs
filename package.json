@@ -9,7 +9,8 @@
     "wip": "./node_modules/mocha/bin/mocha  --grep @wip --require babel-core/register  --reporter nyan --recursive",
     "all": "./node_modules/mocha/bin/mocha  --require babel-core/register  --reporter nyan --recursive",
     "watch": "node_modules/.bin/watchify src/main.js -t babelify -p livereactload -o public/bundle.js",
-    "build": "browserify src/main.js -t babelify --outfile public/bundle.js"
+    "build": "browserify src/main.js -t babelify --outfile public/bundle.js",
+    "build-server": "browserify server.js -t babelify --outfile server-es6.js"
   },
   "repository": {
     "type": "git",
@@ -41,6 +42,7 @@
     "mocha": "^2.3.4",
     "mongodb": "^2.0.49",
     "mongoose": "^4.2.9",
+    "node-sass-middleware": "^0.9.7",
     "ramda": "^0.18.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",

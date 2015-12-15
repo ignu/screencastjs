@@ -12,7 +12,6 @@ function submitPost() {
 }
 
 function postComplete(json) {
-  console.log("User Saved...", json)
   return {
     type: SAVED_USER,
     userId: json.id

@@ -1,5 +1,6 @@
 import React from 'react';
 import VideoJs from 'react-videojs'
+import { Link } from 'react-router'
 
 const onReport = ({eventName}) => {
   console.log(eventName);
@@ -19,6 +20,7 @@ class Video extends React.Component {
 
     return <div className="video-wrapper">
 
+      <Link to="/videos/1">View</Link>
       <div className="title">{ video.name }</div>
 
       <VideoJs

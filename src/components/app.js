@@ -33,6 +33,7 @@ class App extends Component {
               { this.renderRegisterButton() }
 
               <li className="three columns"></li>
+
             </ul>
           </div>
         </header>

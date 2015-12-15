@@ -48,6 +48,8 @@ app.post('/api/users', (req, res) => {
     receiveEmails: req.body.receiveEmails
   }
 
+  console.log(user)
+
   db.createUser(user, (error, userData) => {
     if (error) {
       console.log("-- ERROR --> ", error)
