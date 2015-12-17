@@ -22,15 +22,23 @@ let login = (userId, tokenId) => {
   if (tokenId) Cookies.set(TOKEN, tokenId)
 }
 
+let logout = () => {
+  Cookies.set(USER_ID, undefined)
+  Cookies.set(TOKEN, undefined)
+}
+
 export const reducer = (state = defaultState, action = "DEFAULT") => {
   if (console.debug) console.debug("action ---> ", action)
 
   switch (action.type) {
+  case "LOGOUT" :
+    logout()
+    return Object.assign({}, state, { userId: undefined })
   case "ERROR" :
     return Object.assign({}, state, { savingUser: false, errors: action.errors })
   case "LOGGED_IN_USER" :
     login(action.userId, action.token)
-    return Object.assign({}, state, { savingUser: false, errors: [] })
+    return Object.assign({}, state, { savingUser: false, userId: action.userId })
   case "SAVING_USER" :
     return Object.assign({}, state, { savingUser: true, errors: [] })
   case "SAVED_USER" :
@@ -43,8 +51,6 @@ export const reducer = (state = defaultState, action = "DEFAULT") => {
   }
 }
 
-const createStoreWithMiddleware = applyMiddleware(
-  thunk
-)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
 
 export default createStoreWithMiddleware(reducer)

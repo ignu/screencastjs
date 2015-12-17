@@ -1,13 +1,22 @@
 import React from 'react'
+import { logout } from "../actions/user_actions"
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
 const { Component } = React;
 
 class App extends Component {
+  static contextTypes = {
+    store: React.PropTypes.object
+  }
+
+  logOut() {
+    this.context.store.dispatch(logout())
+  }
+
   renderRegisterButton() {
     if(this.props.userId) {
       return <li className="three columns">
-          <Link to="/register" className="button">Log Out</Link>
+        <button onClick={this.logOut.bind(this)}>Log Out</button>
         </li>
     } else {
       return <li className="three columns">

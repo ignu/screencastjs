@@ -5,6 +5,7 @@ export const SAVING_USER = 'SAVING_USER'
 export const LOGGED_IN_USER = 'LOGGED_IN_USER'
 export const SAVED_USER = 'SAVED_USER'
 export const ERROR = 'ERROR'
+export const LOGOUT = 'LOGOUT'
 
 function submitPost() {
   return {
@@ -39,6 +40,10 @@ let validateUser = (user) => {
   if (!user.email) errors.push("Email required")
   if (!user.password) errors.push("Password required")
   return errors
+}
+
+export function logout() {
+  return {type: LOGOUT}
 }
 
 export function loginUser(user) {
