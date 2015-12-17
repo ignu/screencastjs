@@ -1,17 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, Route, Link } from 'react-router'
 import { connect } from 'react-redux'
-import saveUser from '../actions/user_actions'
+import loginUser from '../actions/user_actions'
 import Error from './error'
-
-const { Component } = React;
-
 import videoStore from '../stores/video_store'
 import Spinner from 'react-spinner'
 
-class SignUpForm extends React.Component {
+
+class LoginForm extends React.Component {
   static contextTypes = {
     store: React.PropTypes.object
   }
@@ -19,11 +17,10 @@ class SignUpForm extends React.Component {
   submit(e) {
     e.preventDefault()
     let json = {
-      email: this.refs.email.getDOMNode().value,
-      password: this.refs.password.getDOMNode().value,
-      receiveEmails: this.refs.receiveEmails.getDOMNode().checked
+      email: this.refs.email.value,
+      password: this.refs.password.value,
     }
-    this.context.store.dispatch(saveUser(json))
+    this.context.store.dispatch(loginUser(json))
   }
 
   renderActions() {
@@ -40,7 +37,7 @@ class SignUpForm extends React.Component {
 
   render() {
     return <div className="wrapper">
-      <h3>Register for ReactCasts.tv</h3>
+      <h3>Login to ReactCasts.tv</h3>
 
       { this.renderErrors() }
 
@@ -52,10 +49,6 @@ class SignUpForm extends React.Component {
         <label htmlFor="password">Password</label>
         <input ref="password" id="password" type="password" />
 
-        <div>
-          <input ref="receiveEmails" type="checkbox" name="emails" value="emails">I would like to receive emails about new views and JavaScript projects</input>
-        </div>
-
         { this.renderActions() }
       </form>
     </div>
@@ -64,9 +57,9 @@ class SignUpForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loading: state.savingUser
+    loading: state.loggingInUser
     ,errors: state.errors
   }
 }
 
-export default connect(mapStateToProps)(SignUpForm)
+export default connect(mapStateToProps)(LoginForm)

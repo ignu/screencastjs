@@ -32,6 +32,10 @@ let validateUser = (user) => {
   return errors
 }
 
+export function loginUser(user) {
+  console.log("saving", user)
+}
+
 export default function saveUser(user) {
   return dispatch => {
     let errors = validateUser(user);
