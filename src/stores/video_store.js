@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import Cookies from 'cookies-js'
 
 const USER_ID = "iig"
+const TOKEN = "tgn"
 
 let cookiesEnabled = typeof Cookies.get === "function"
 
@@ -13,16 +14,27 @@ const defaultState = {
   userId: cookiesEnabled ? Cookies.get(USER_ID) : undefined
 }
 
+let login = (userId, tokenId) => {
+  console.log("userId, tokenId", userId, tokenId)
+  if (!cookiesEnabled) return
+
+  Cookies.set(USER_ID, userId)
+  if (tokenId) Cookies.set(TOKEN, tokenId)
+}
+
 export const reducer = (state = defaultState, action = "DEFAULT") => {
   if (console.debug) console.debug("action ---> ", action)
 
   switch (action.type) {
   case "ERROR" :
     return Object.assign({}, state, { savingUser: false, errors: action.errors })
+  case "LOGGED_IN_USER" :
+    login(action.userId, action.token)
+    return Object.assign({}, state, { savingUser: false, errors: [] })
   case "SAVING_USER" :
     return Object.assign({}, state, { savingUser: true, errors: [] })
   case "SAVED_USER" :
-    if (cookiesEnabled) Cookies.set(USER_ID, action.userId)
+    login(action.userId)
     return Object.assign({}, state, { savingUser: false, userId: action.userId })
   case "RECEIVE_VIDEOS" :
     return Object.assign({}, state, { videos: action.videos, loading: false })

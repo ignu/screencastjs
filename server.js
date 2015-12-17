@@ -31,14 +31,28 @@ app.get('/api/videos', (req, res) => {
   })
 })
 
+app.post('/api/login', (req, res) => {
+  let user = {
+    email    : req.body.email,
+    password : req.body.password,
+  }
+
+  db.authWithPassword(user, (error, authData) => {
+    if (error) {
+      console.log("-- ERROR --> ", error)
+      res.status(403).send({ error: error})
+    } else {
+      res.send(authData)
+    }
+  })
+})
+
 app.post('/api/users', (req, res) => {
   let user = {
     email    : req.body.email,
     password : req.body.password,
     receiveEmails: req.body.receiveEmails
   }
-
-  console.log(user)
 
   db.createUser(user, (error, userData) => {
     if (error) {
@@ -62,6 +76,11 @@ app.get('/videos', (req, res) => {
 })
 
 app.get('/register', (req, res) => {
+  let index = path.join(__dirname, "public/index.html")
+  res.sendFile(index)
+})
+
+app.get('/login', (req, res) => {
   let index = path.join(__dirname, "public/index.html")
   res.sendFile(index)
 })

@@ -1,17 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, Route, Link } from 'react-router'
 import { connect } from 'react-redux'
-import saveUser from '../actions/user_actions'
+import { loginUser } from '../actions/user_actions'
 import Error from './error'
-
-const { Component } = React;
-
 import videoStore from '../stores/video_store'
 import Spinner from 'react-spinner'
 
-class SignUpForm extends React.Component {
+console.log("Error", Error)
+class LoginForm extends React.Component {
   static contextTypes = {
     store: React.PropTypes.object
   }
@@ -19,11 +17,10 @@ class SignUpForm extends React.Component {
   submit(e) {
     e.preventDefault()
     let json = {
-      email: this.refs.email.getDOMNode().value,
-      password: this.refs.password.getDOMNode().value,
-      receiveEmails: this.refs.receiveEmails.getDOMNode().checked
+      email: this.refs.email.value,
+      password: this.refs.password.value,
     }
-    this.context.store.dispatch(saveUser(json))
+    this.context.store.dispatch(loginUser(json))
   }
 
   renderActions() {
@@ -35,12 +32,16 @@ class SignUpForm extends React.Component {
   }
 
   renderErrors() {
-    return this.props.errors.map((e) => <Error message={e}/> )
+    return this.props.errors.map((e) => {
+      console.warn(e, "<<<<< ERROR")
+      return <Error message={e}/>
+    })
   }
 
   render() {
+    console.log("this.props", this.props)
     return <div className="wrapper">
-      <h3>Register for ReactCasts.tv</h3>
+      <h3>Login to ReactCasts.tv</h3>
 
       { this.renderErrors() }
 
@@ -52,11 +53,6 @@ class SignUpForm extends React.Component {
         <label htmlFor="password">Password</label>
         <input ref="password" id="password" type="password" />
 
-        <div className="labelRow">
-          <input ref="receiveEmails" type="checkbox" id="emails" name="emails" value="emails"/>
-          <label className="check-label" htmlFor="emails"> I would like to receive emails about new views and JavaScript projects</label>
-        </div>
-
         { this.renderActions() }
       </form>
     </div>
@@ -64,10 +60,11 @@ class SignUpForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return {
-    loading: state.savingUser
+    loading: state.loggingInUser
     ,errors: state.errors
   }
 }
 
-export default connect(mapStateToProps)(SignUpForm)
+export default connect(mapStateToProps)(LoginForm)

@@ -87,3 +87,16 @@ form .react-spinner {
  0% { opacity: 1; }
  100% { opacity: 0.15; }
 }
+
+.labelRow {
+  display: flex;
+
+  input {
+    margin-top: 7px;
+  }
+
+  label.check-label {
+    padding-left: 10px;
+  }
+}
+

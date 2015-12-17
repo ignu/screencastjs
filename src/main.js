@@ -6,6 +6,7 @@ import App from "../src/components/app"
 import videoStore from '../src/stores/video_store'
 import VideoListLoader from '../src/components/video_list_loader'
 import SignUpForm from '../src/components/sign_up_form'
+import LoginForm from '../src/components/login_form'
 import { Router, Route, IndexRoute } from 'react-router'
 
 let wat = (a, b) => console.log(a, b)
@@ -21,6 +22,8 @@ render((
           </Route>
 
           <Route path="register" component={ SignUpForm } />
+          <Route path="login"    component={ LoginForm } />
+
         </Route>
       </Router>
     </Provider>
