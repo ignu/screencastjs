@@ -100,3 +100,13 @@ form .react-spinner {
   }
 }
 
+#header {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+#header a {
+  margin: 10px
+}

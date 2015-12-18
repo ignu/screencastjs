@@ -83,4 +83,15 @@ label.check-label {
   padding-left: 10px;
 }
 
+#header {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+#header a {
+  margin: 10px
+}
+
 /*# sourceMappingURL=main.css.map */

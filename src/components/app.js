@@ -13,41 +13,32 @@ class App extends Component {
     this.context.store.dispatch(logout())
   }
 
-  renderRegisterButton() {
+  renderAuthButtons() {
     if(this.props.userId) {
-      return <li className="three columns">
+      return <div>
+        <Link to="/videos">Videos</Link>
         <button onClick={this.logOut.bind(this)}>Log Out</button>
-        </li>
+        </div>
     } else {
-      return <li className="three columns">
+      return <div>
+          <Link to="/videos">Videos</Link>
+          <Link to="/login">Log In</Link>
           <Link to="/register" className="button button-primary">Sign Up</Link>
-        </li>
+        </div>
     }
   }
 
   render() {
     return <div className="wrapper">
-        <header id="#header" className="row">
-          <div className="eight columns"><h1>ReactCasts.tv</h1></div>
-          <div id="nav" className="four columns">
-            <ul className="row">
-              <li className="three columns">
-                <Link to="/videos">Videos</Link>
-              </li>
+        <header id="header" className="row">
+          <h1>ReactCasts.tv</h1>
 
-              <li className="three columns">
-                <a href="#">About</a>
-              </li>
-
-              { this.renderRegisterButton() }
-
-              <li className="three columns"></li>
-
-            </ul>
-          </div>
+          { this.renderAuthButtons() }
         </header>
 
-      { this.props.children }
+      <div>
+        { this.props.children }
+      </div>
 
       </div>
   }
