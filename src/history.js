@@ -1,3 +1,8 @@
 // history.js
 import createBrowserHistory from 'history/lib/createBrowserHistory'
-export default createBrowserHistory()
+
+let rv = {}
+
+if(process.env.npm_lifecycle_event != "test") rv = createBrowserHistory()
+
+export default rv

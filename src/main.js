@@ -7,7 +7,7 @@ import videoStore from '../src/stores/video_store'
 import VideoListLoader from '../src/components/video_list_loader'
 import SignUpForm from '../src/components/sign_up_form'
 import LoginForm from '../src/components/login_form'
-import { Router, Route, Redirect, IndexRoute } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
 
 render((
     <Provider store={videoStore}>
