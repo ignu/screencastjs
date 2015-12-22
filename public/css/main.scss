@@ -1,11 +1,12 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,300italic,400italic,700italic);
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
 
-$dark-gray: #323232;
+$dark-gray: #222222;
 $red: #db325a;
 $black: #272727;
 $white: #fff;
 $light-gray: #808080;
+$blue: #00d9ff;
 
 .clearfix { clear: both; }
 
@@ -21,7 +22,15 @@ h1, h2, h3, h4 {
 }
 
 a {
-  color: $white;
+  color: $blue;
+  text-decoration: none;
+}
+
+header .button.button-primary {
+    color: $white;
+    background-color: $blue;
+
+  text-decoration: none;
 }
 
 #nav {

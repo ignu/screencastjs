@@ -31,7 +31,7 @@ class App extends Component {
   render() {
     return <div className="wrapper">
         <header id="header" className="row">
-          <h1>ReactCasts.tv</h1>
+          <Link to="/"><img id="logo" src="/images/reactcasts-logo.png" alt="ReactCasts.tv"/></Link>
 
           { this.renderAuthButtons() }
         </header>

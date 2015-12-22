@@ -16,7 +16,6 @@ class VideoList extends React.Component {
 
   render() {
     return <div>
-        <h3>Videos</h3>
         { this.renderVideos() }
       </div>
   }

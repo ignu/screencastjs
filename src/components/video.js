@@ -30,8 +30,11 @@ class Video extends React.Component {
 
     return <div className="video-wrapper">
 
-      <Link to="/videos/1">View</Link>
-      <div className="title">{ video.name }</div>
+      <div className="title">
+        { video.name }
+        &nbsp;
+        <Link to="/videos/1">View</Link>
+      </div>
 
       <div>
         <video controls width="640" resize="fase">

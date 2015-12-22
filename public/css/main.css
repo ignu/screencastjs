@@ -4,7 +4,7 @@
   clear: both; }
 
 body {
-  background-color: #323232;
+  background-color: #222222;
   padding: 20px !important;
   color: #808080; }
 
@@ -13,7 +13,13 @@ h1, h2, h3, h4 {
   color: #fff; }
 
 a {
-  color: #fff; }
+  color: #00d9ff;
+  text-decoration: none; }
+
+header .button.button-primary {
+  color: #fff;
+  background-color: #00d9ff;
+  text-decoration: none; }
 
 #nav {
   float: right; }
@@ -70,28 +76,20 @@ form .react-spinner {
     opacity: 1; }
   100% {
     opacity: 0.15; } }
-
 .labelRow {
-  display: flex;
-}
-
-.labelRow input {
-    margin-top: 7px;
-}
-
-label.check-label {
-  padding-left: 10px;
-}
+  display: flex; }
+  .labelRow input {
+    margin-top: 7px; }
+  .labelRow label.check-label {
+    padding-left: 10px; }
 
 #header {
   display: flex;
   flex-flow: row wrap;
   align-items: stretch;
-  justify-content: space-between;
-}
+  justify-content: space-between; }
 
 #header a {
-  margin: 10px
-}
+  margin: 10px; }
 
 /*# sourceMappingURL=main.css.map */
