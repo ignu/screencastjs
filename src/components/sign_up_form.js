@@ -3,8 +3,9 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router, Route, Link } from 'react-router'
 import { connect } from 'react-redux'
-import saveUser from '../actions/user_actions'
+import { saveUser, addStripeInfo } from '../actions/user_actions'
 import Error from './error'
+import StripeCheckout from 'react-stripe-checkout'
 
 const { Component } = React;
 
@@ -29,9 +30,23 @@ class SignUpForm extends React.Component {
   renderActions() {
     if (this.props.loading) { return <Spinner/> }
 
-    return <div className="actions">
-        <button className="button-primary">Submit</button>
-      </div>
+    if (this.props.stripeToken) return <button className="button-primary">Submit</button>
+
+    return <div/>
+
+  }
+
+  setToken(data) {
+    this.context.store.dispatch(addStripeInfo(data))
+  }
+
+  renderStripe() {
+    return <StripeCheckout
+      panelLabel="Subscribe"
+      currency="USD"
+      stripeKey="pk_test_yFf84eQAfJv82ahlbB8BM3Hr"
+      token={this.setToken.bind(this)}
+      name="ReactCasts.tv"/>
   }
 
   renderErrors() {
@@ -40,12 +55,14 @@ class SignUpForm extends React.Component {
 
   render() {
     return <div className="wrapper">
-      <h3>Register for ReactCasts.tv</h3>
+
+      ReactCasts is <strong>$8.99/month</strong> for two or more weekly videos about React, React Native and related build tools.
+
+      <h3>Sign Up</h3>
 
       { this.renderErrors() }
 
       <form onSubmit={ this.submit.bind(this) }>
-
         <label htmlFor="email">Email</label>
         <input ref="email" id="email" type="email" />
 
@@ -57,8 +74,11 @@ class SignUpForm extends React.Component {
           <label className="check-label" htmlFor="emails"> I would like to receive emails about new views and JavaScript projects</label>
         </div>
 
-        { this.renderActions() }
+        <div className="actions">{ this.renderActions() }</div>
       </form>
+
+      { this.renderStripe() }
+
     </div>
   }
 }

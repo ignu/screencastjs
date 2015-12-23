@@ -83,6 +83,10 @@ export function loginUser(user) {
   }
 }
 
+export function addStripeInfo(data) {
+  console.log("data", data)
+}
+
 export default function saveUser(user) {
   return dispatch => {
     let errors = validateUser(user);

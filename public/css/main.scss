@@ -2,7 +2,7 @@
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,700,300);
 
 $dark-gray: #222222;
-$red: #db325a;
+$red: #881D0F;
 $black: #272727;
 $white: #fff;
 $light-gray: #808080;
@@ -46,11 +46,12 @@ header .button.button-primary {
 }
 
 .error {
-  border: 1px solid $red;
+  border: 1px solid #330000;
   padding: 15px;
-  background-color: #FFAAAA;
+  background-color: $red;
   font-weight: bold;
   margin-bottom: 10px;
+  color: $white;
 }
 
 /* HACK: move to CSSify */

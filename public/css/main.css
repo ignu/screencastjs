@@ -30,11 +30,12 @@ header .button.button-primary {
   margin-bottom: 25px; }
 
 .error {
-  border: 1px solid #db325a;
+  border: 1px solid #330000;
   padding: 15px;
-  background-color: #FFAAAA;
+  background-color: #881D0F;
   font-weight: bold;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  color: #fff; }
 
 /* HACK: move to CSSify */
 .react-spinner {
