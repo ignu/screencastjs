@@ -41,6 +41,7 @@ class SignUpForm extends React.Component {
   }
 
   renderStripe() {
+    if (this.props.stripeInfo) return <div/>
     return <StripeCheckout
       panelLabel="Subscribe"
       currency="USD"
@@ -49,8 +50,8 @@ class SignUpForm extends React.Component {
       panelLabel="Continue"
       allowRememberMe={false}
       name="Sign up for ReactCasts">
-        <button className="btn">
-          Add Credit Card Information
+        <button className="button button-primary">
+          Sign Up for $7.99/month
         </button>
       </StripeCheckout>
   }
@@ -59,32 +60,36 @@ class SignUpForm extends React.Component {
     return this.props.errors.map((e) => <Error message={e}/> )
   }
 
-  render() {
-    return <div className="wrapper">
+  renderForm() {
+    if (!this.props.stripeInfo) return <div/>
+    return <form onSubmit={ this.submit.bind(this) }>
+        <h3>Complete Registration</h3>
 
-      ReactCasts is <strong>$8.99/month</strong> for two or more weekly videos about React, React Native and related build tools.
-
-      <h3>Sign Up</h3>
-
-      { this.renderErrors() }
-
-      <form onSubmit={ this.submit.bind(this) }>
         <label htmlFor="email">Email</label>
-        <input ref="email" id="email" type="email" />
+        <input ref="email" id="email" type="email" value={this.props.stripeInfo.email}/>
 
         <label htmlFor="password">Password</label>
         <input ref="password" id="password" type="password" />
 
         <div className="labelRow">
-          <input ref="receiveEmails" type="checkbox" id="emails" name="emails" value="emails"/>
-          <label className="check-label" htmlFor="emails"> I would like to receive emails about new views and JavaScript projects</label>
+          <input ref="receiveEmails" checked="true" type="checkbox" id="emails" name="emails" value="emails"/>
+          <label className="check-label" htmlFor="emails"> I would like to receive emails about new videos and projects</label>
         </div>
 
         <div className="actions">{ this.renderActions() }</div>
       </form>
+  }
+
+  render() {
+    return <div className="wrapper">
+
+      ReactCasts is <strong>$8.99/month</strong> for two or more weekly videos about React, React Native and related build tools.
+
+      { this.renderErrors() }
+
+      { this.renderForm() }
 
       { this.renderStripe() }
-
     </div>
   }
 }
