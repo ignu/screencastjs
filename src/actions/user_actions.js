@@ -6,6 +6,7 @@ export const LOGGED_IN_USER = 'LOGGED_IN_USER'
 export const SAVED_USER = 'SAVED_USER'
 export const ERROR = 'ERROR'
 export const LOGOUT = 'LOGOUT'
+export const RECEIVE_STRIPE_TOKEN = 'RECEIVE_STRIPE_TOKEN'
 
 function submitPost() {
   return {
@@ -84,7 +85,10 @@ export function loginUser(user) {
 }
 
 export function addStripeInfo(data) {
-  console.log("data", data)
+  return {
+    type: RECEIVE_STRIPE_TOKEN,
+    stripeInfo: data
+  }
 }
 
 export default function saveUser(user) {

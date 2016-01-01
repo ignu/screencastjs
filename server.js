@@ -4,6 +4,7 @@ import path from 'path'
 import dotenv from "dotenv"
 import R from "ramda"
 import bodyParser from "body-parser"
+import Stripe from "stripe"
 
 let app = express();
 dotenv.load();
@@ -54,16 +55,29 @@ app.post('/api/users', (req, res) => {
     receiveEmails: req.body.receiveEmails
   }
 
+  let updateProfile = (user, customer) => {
+    let profileDb = new Firebase(`${firebaseUrl}/profiles/${user.id}`);
+    profileDb.set({
+      email: user.email,
+      stripeCustomer: customer,
+      receiveEmails: user.receiveEmails,
+    }, () => {res.send(user)})
+  }
+
+
   db.createUser(user, (error, userData) => {
     if (error) {
       console.log("-- ERROR --> ", error)
       res.status(403).send({ error: error})
     } else {
       user.id = userData.uid
-      let profileDb = new Firebase(`${firebaseUrl}/profiles/${user.id}`);
-      profileDb.set({email: user.email,
-                     receiveEmails: user.receiveEmails}, () => {
-                       res.send(user) })
+
+      stripe.customers.create({
+        description: 'Customer for test@example.com',
+        source: "tok_7cAwM7W02qD5V1" // obtained with Stripe.js
+      }, function(err, customer) {
+        updateProfile(user, customer)
+      });
     }
   })
 })

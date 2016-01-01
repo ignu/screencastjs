@@ -22,7 +22,8 @@ class SignUpForm extends React.Component {
     let json = {
       email: this.refs.email.getDOMNode().value,
       password: this.refs.password.getDOMNode().value,
-      receiveEmails: this.refs.receiveEmails.getDOMNode().checked
+      receiveEmails: this.refs.receiveEmails.getDOMNode().checked,
+      stripeInfo: this.props.stripeInfo
     }
     this.context.store.dispatch(saveUser(json))
   }
@@ -30,10 +31,9 @@ class SignUpForm extends React.Component {
   renderActions() {
     if (this.props.loading) { return <Spinner/> }
 
-    if (this.props.stripeToken) return <button className="button-primary">Submit</button>
+    if (this.props.stripeInfo) return <button className="button-primary">Submit</button>
 
     return <div/>
-
   }
 
   setToken(data) {
@@ -46,7 +46,13 @@ class SignUpForm extends React.Component {
       currency="USD"
       stripeKey="pk_test_yFf84eQAfJv82ahlbB8BM3Hr"
       token={this.setToken.bind(this)}
-      name="ReactCasts.tv"/>
+      panelLabel="Continue"
+      allowRememberMe={false}
+      name="Sign up for ReactCasts">
+        <button className="btn">
+          Add Credit Card Information
+        </button>
+      </StripeCheckout>
   }
 
   renderErrors() {
@@ -85,8 +91,9 @@ class SignUpForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    loading: state.savingUser
-    ,errors: state.errors
+    stripeInfo: state.stripeInfo,
+    errors: state.errors,
+    loading: state.savingUser,
   }
 }
 

@@ -66,6 +66,7 @@
     "react-transform-hmr": "^1.0.1",
     "redux-devtools": "^3.0.0",
     "sinon": "^1.17.2",
+    "stripe": "^4.1.0",
     "supertest": "^1.1.0",
     "watchify": "^3.6.1"
   }

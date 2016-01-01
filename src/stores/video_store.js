@@ -44,6 +44,8 @@ export const reducer = (state = defaultState, action = "DEFAULT") => {
   case "SAVED_USER" :
     login(action.userId)
     return Object.assign({}, state, { savingUser: false, userId: action.userId })
+  case "RECEIVE_STRIPE_TOKEN" :
+    return Object.assign({}, state, { stripeInfo: action.stripeInfo })
   case "RECEIVE_VIDEOS" :
     return Object.assign({}, state, { videos: action.videos, loading: false })
   default:
