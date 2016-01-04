@@ -4,7 +4,9 @@ import path from 'path'
 import dotenv from "dotenv"
 import R from "ramda"
 import bodyParser from "body-parser"
-import Stripe from "stripe"
+import StripeClient from "stripe"
+
+let Stripe = StripeClient("pk_test_yFf84eQAfJv82ahlbB8BM3Hr")
 
 let app = express();
 dotenv.load();
@@ -72,10 +74,12 @@ app.post('/api/users', (req, res) => {
     } else {
       user.id = userData.uid
 
-      stripe.customers.create({
-        description: 'Customer for test@example.com',
+      Stripe.customers.create({
+        description: `Customer for ${user.email}`,
+        plan: "react-tv-monthly",
         source: "tok_7cAwM7W02qD5V1" // obtained with Stripe.js
       }, function(err, customer) {
+        console.log("err", err)
         updateProfile(user, customer)
       });
     }

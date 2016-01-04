@@ -91,7 +91,7 @@ export function addStripeInfo(data) {
   }
 }
 
-export default function saveUser(user) {
+export function saveUser(user) {
   return dispatch => {
     let errors = validateUser(user);
     if(errors.length) { return dispatch(errorsFor(errors)) }

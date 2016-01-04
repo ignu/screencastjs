@@ -20,9 +20,9 @@ class SignUpForm extends React.Component {
   submit(e) {
     e.preventDefault()
     let json = {
-      email: this.refs.email.getDOMNode().value,
-      password: this.refs.password.getDOMNode().value,
-      receiveEmails: this.refs.receiveEmails.getDOMNode().checked,
+      email: this.refs.email.value,
+      password: this.refs.password.value,
+      receiveEmails: this.refs.receiveEmails.checked,
       stripeInfo: this.props.stripeInfo
     }
     this.context.store.dispatch(saveUser(json))
@@ -51,7 +51,7 @@ class SignUpForm extends React.Component {
       allowRememberMe={false}
       name="Sign up for ReactCasts">
         <button className="button button-primary">
-          Sign Up for $7.99/month
+          Sign Up for $8.99/month
         </button>
       </StripeCheckout>
   }
@@ -66,13 +66,13 @@ class SignUpForm extends React.Component {
         <h3>Complete Registration</h3>
 
         <label htmlFor="email">Email</label>
-        <input ref="email" id="email" type="email" value={this.props.stripeInfo.email}/>
+        <input ref="email" id="email" type="email" defaultValue={this.props.stripeInfo.email}/>
 
         <label htmlFor="password">Password</label>
         <input ref="password" id="password" type="password" />
 
         <div className="labelRow">
-          <input ref="receiveEmails" checked="true" type="checkbox" id="emails" name="emails" value="emails"/>
+          <input ref="receiveEmails" defaultChecked="true" type="checkbox" id="emails" name="emails" value="emails"/>
           <label className="check-label" htmlFor="emails"> I would like to receive emails about new videos and projects</label>
         </div>
 
