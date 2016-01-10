@@ -62,6 +62,12 @@ export function logout() {
 export function cancel() {
   return dispatch => {
     dispatch({ type: CANCEL })
+    let promise = fetch("/api/cancel", {})
+
+    promise.then((body) =>{
+      dispatch({ type: "FINISHED_CANCEL" })
+      history.replaceState(null, '/')
+    })
   }
 }
 
