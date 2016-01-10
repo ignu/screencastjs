@@ -31,6 +31,10 @@ export const reducer = (state = defaultState, action = "DEFAULT") => {
   if (console.debug) console.debug("action ---> ", action)
 
   switch (action.type) {
+  case "CANCEL" :
+    return Object.assign({}, state, { savingUser: true })
+  case "FINISHED_CANCEL" :
+    return Object.assign({}, state, { })
   case "LOGOUT" :
     logout()
     return Object.assign({}, state, { userId: undefined })

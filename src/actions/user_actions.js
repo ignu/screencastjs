@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import fetchIso from 'isomorphic-fetch'
 import history from '../history'
 
 export const SAVING_USER = 'SAVING_USER'
@@ -6,12 +6,24 @@ export const LOGGED_IN_USER = 'LOGGED_IN_USER'
 export const SAVED_USER = 'SAVED_USER'
 export const ERROR = 'ERROR'
 export const LOGOUT = 'LOGOUT'
+export const CANCEL = 'CANCEL'
 export const RECEIVE_STRIPE_TOKEN = 'RECEIVE_STRIPE_TOKEN'
 
 function submitPost() {
   return {
     type: SAVING_USER
   }
+}
+
+let fetch = (url, body) => {
+  return fetchIso(`./api/login`, {
+    method: "POST",
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body
+  })
 }
 
 function loginComplete(json) {
@@ -47,6 +59,12 @@ export function logout() {
   return {type: LOGOUT}
 }
 
+export function cancel() {
+  return dispatch => {
+    dispatch({ type: CANCEL })
+  }
+}
+
 export function loginUser(user) {
   return dispatch => {
     let errors = validateUser(user);
@@ -57,15 +75,11 @@ export function loginUser(user) {
     // TODO: DRY this up if this pattern is okay.
     dispatch(submitPost())
 
-    return fetch(`./api/login`, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user) })
-      .then(response => response.json())
-      .then((json) => {
+    let promise = fetch(`./api/login`, JSON.stringify(user))
+
+    promise.then(response => response.json())
+
+    return promise.then((json) => {
         if (json.error) {
           switch(json.error.code) {
           case "INVALID_USER":
@@ -97,13 +111,8 @@ export function saveUser(user) {
     if(errors.length) { return dispatch(errorsFor(errors)) }
 
     dispatch(submitPost())
-    return fetch(`./api/users`, {
-      method: "POST",
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(user) })
+
+    return fetch(`./api/users`, JSON.stringify(user))
       .then(response => response.json())
       .then((json) => {
         if (json.error) {

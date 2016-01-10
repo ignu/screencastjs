@@ -7,6 +7,7 @@ import videoStore from '../src/stores/video_store'
 import VideoListLoader from '../src/components/video_list_loader'
 import SignUpForm from '../src/components/sign_up_form'
 import LoginForm from '../src/components/login_form'
+import Account from '../src/components/account'
 import { Router, Route, IndexRoute } from 'react-router'
 
 render((
@@ -19,6 +20,7 @@ render((
             <Route path=":id" component={ VideoListLoader } />
           </Route>
 
+          <Route path="account" component={ Account } />
           <Route path="register" component={ SignUpForm } />
           <Route path="login"    component={ LoginForm } />
 

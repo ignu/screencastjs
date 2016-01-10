@@ -17,6 +17,7 @@ class App extends Component {
     if(this.props.userId) {
       return <div>
         <Link to="/videos">Videos</Link>
+        <Link to="/account">Account</Link>
         <button onClick={this.logOut.bind(this)}>Log Out</button>
         </div>
     } else {

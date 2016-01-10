@@ -103,6 +103,11 @@ app.get('/login', (req, res) => {
   res.sendFile(index)
 })
 
+app.get('/account', (req, res) => {
+  let index = path.join(__dirname, "public/index.html")
+  res.sendFile(index)
+})
+
 // TODO: better test for if we're running tests...
 if(process.env.npm_lifecycle_event != "test") {
   const server = app.listen(8000, () => {
