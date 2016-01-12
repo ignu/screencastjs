@@ -113,8 +113,15 @@ form .react-spinner {
 .blurb {
   font-size: 1.3em;
   color: $white;
+  padding: 10px;
+  margin: 15px 0px;
 }
 
+footer {
+    text-align: center;
+    width: 100%;
+    margin: 10px;
+}
 
 #header {
   display: flex;

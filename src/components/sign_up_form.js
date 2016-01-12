@@ -51,7 +51,7 @@ class SignUpForm extends React.Component {
       allowRememberMe={false}
       name="Sign up for ReactCasts">
         <button className="button button-primary">
-          Sign Up for $8.99/month
+          Start Learning Now for $7.99/month
         </button>
       </StripeCheckout>
   }
@@ -83,7 +83,9 @@ class SignUpForm extends React.Component {
   render() {
     return <div className="wrapper">
 
-      ReactCasts is <strong>$8.99/month</strong> for two or more weekly videos about React, React Native and related build tools.
+      <div className="blurb">
+        ReactCasts is <strong>$8.99/month</strong> for two or more weekly videos about React, React Native and related build tools.
+      </div>
 
       { this.renderErrors() }
 

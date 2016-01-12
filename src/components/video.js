@@ -32,8 +32,6 @@ class Video extends React.Component {
 
       <div className="title">
         { video.name }
-        &nbsp;
-        <Link to="/videos/1">View</Link>
       </div>
 
       <div>
