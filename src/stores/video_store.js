@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import Cookies from 'cookies-js'
+import history from '../history'
 
 const USER_ID = "iig"
 const TOKEN = "tgn"
@@ -25,6 +26,7 @@ let login = (userId, tokenId) => {
 let logout = () => {
   Cookies.set(USER_ID, undefined)
   Cookies.set(TOKEN, undefined)
+  history.replaceState(null, '/')
 }
 
 export const reducer = (state = defaultState, action = "DEFAULT") => {

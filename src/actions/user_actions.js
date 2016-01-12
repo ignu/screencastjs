@@ -15,8 +15,8 @@ function submitPost() {
   }
 }
 
-let fetch = (url, body) => {
-  return fetchIso(`./api/login`, {
+let post = (url, body) => {
+  return fetchIso(url, {
     method: "POST",
     headers: {
       'Accept': 'application/json',
@@ -62,7 +62,7 @@ export function logout() {
 export function cancel() {
   return dispatch => {
     dispatch({ type: CANCEL })
-    let promise = fetch("/api/cancel", {})
+    let promise = post("/api/cancel", {})
 
     promise.then((body) =>{
       dispatch({ type: "FINISHED_CANCEL" })
@@ -76,16 +76,11 @@ export function loginUser(user) {
     let errors = validateUser(user);
     if(errors.length) { return dispatch(errorsFor(errors)) }
 
-    // waiting for save and login isn't really different.
-    // is this sitll okay?
-    // TODO: DRY this up if this pattern is okay.
     dispatch(submitPost())
 
-    let promise = fetch(`./api/login`, JSON.stringify(user))
-
-    promise.then(response => response.json())
-
-    return promise.then((json) => {
+    return post(`./api/login`, JSON.stringify(user))
+      .then(response => response.json())
+      .then((json) => {
         if (json.error) {
           switch(json.error.code) {
           case "INVALID_USER":
@@ -118,7 +113,7 @@ export function saveUser(user) {
 
     dispatch(submitPost())
 
-    return fetch(`./api/users`, JSON.stringify(user))
+    return post(`./api/users`, JSON.stringify(user))
       .then(response => response.json())
       .then((json) => {
         if (json.error) {

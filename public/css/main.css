@@ -84,6 +84,10 @@ form .react-spinner {
   .labelRow label.check-label {
     padding-left: 10px; }
 
+.blurb {
+  font-size: 1.3em;
+  color: #fff; }
+
 #header {
   display: flex;
   flex-flow: row wrap;
