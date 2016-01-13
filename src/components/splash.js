@@ -30,7 +30,7 @@ class Splash extends Component {
         The React ecosystem evolves at a rapid pace. <Link to="/register">Sign up for ReactCasts today</Link> for $7.99 amonth to keep up with the latest in React, React Native and JavaScript libraries with two short videos a week.
       </div>
 
-      <h4>Latest Video:</h4>
+      <h5>Latest Video:</h5>
 
       { this.renderVideo() }
 

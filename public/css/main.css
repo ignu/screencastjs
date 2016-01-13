@@ -95,6 +95,10 @@ footer {
   width: 100%;
   margin: 10px; }
 
+.blog {
+  padding: 20px 0px;
+  color: #fff; }
+
 #header {
   display: flex;
   flex-flow: row wrap;
