@@ -84,7 +84,7 @@ class SignUpForm extends React.Component {
     return <div className="wrapper">
 
       <div className="blurb">
-        ReactCasts is <strong>$8.99/month</strong> for two or more weekly videos about React, React Native and related build tools.
+        ReactCasts is <strong>$7.99/month</strong> for two or more weekly videos about React, React Native and related build tools.
       </div>
 
       { this.renderErrors() }
