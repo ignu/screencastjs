@@ -14,16 +14,20 @@ class VideoListLoader extends Component {
   }
 
   render() {
-    let state = this.context.store.getState()
-
-    if (state.loading) {
+    if (this.props.loading) {
       return <div className="loading"><Spinner/></div>
-   }
+    }
 
-    return <VideoList videos={ state.videos } />
+    return <VideoList { ...this.props } />
   }
 }
 
-const mapStateToProps = (x) => x
+const mapStateToProps = (x) => {
+  return {
+    loggedIn: !!x.userId,
+    videos: x.videos,
+    loading: x.loading
+  }
+}
 
 export default connect(mapStateToProps)(VideoListLoader)

@@ -10,7 +10,7 @@ class VideoList extends React.Component {
     let videos = this.props.videos
 
     return videos.map((video) => {
-      return <Video key={`video-${video.id}`} video={ video } showPost={ true }/>
+      return <Video key={`video-${video.id}`} video={ video } showPost={ true } loggedIn={ this.props.loggedIn }/>
     })
   }
 
