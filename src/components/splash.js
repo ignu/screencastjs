@@ -20,7 +20,7 @@ class Splash extends Component {
       return <div className="loading"><Spinner/></div>
     }
     else {
-      return <Video video={ this.props.video } />
+      return <Video video={ this.props.video } loggedIn={ this.props.loggedIn } />
     }
   }
 
@@ -45,7 +45,8 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    video: state.videos[0]
+    video: state.videos[0],
+    loggedIn: !!state.userId
   }
 }
 

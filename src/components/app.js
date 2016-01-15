@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   renderAuthButtons() {
-    if(this.props.userId) {
+    if (this.props.userId) {
       return <div>
         <Link to="/videos">Videos</Link>
         <Link to="/account">Account</Link>
