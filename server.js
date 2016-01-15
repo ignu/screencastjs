@@ -5,11 +5,15 @@ import dotenv from "dotenv"
 import R from "ramda"
 import bodyParser from "body-parser"
 import StripeClient from "stripe"
+dotenv.load();
 
-let Stripe = StripeClient("pk_test_yFf84eQAfJv82ahlbB8BM3Hr")
+const secretKey = process.env.STRIPE_SECRET
+
+if(!secretKey) { throw("COULD NOT LOAD SECRET KEY"); }
+
+let Stripe = StripeClient(secretKey)
 
 let app = express();
-dotenv.load();
 
 let firebaseUrl = process.env.FIREBASE_URL
 let db = new Firebase(firebaseUrl)
@@ -51,6 +55,8 @@ app.post('/api/login', (req, res) => {
 })
 
 app.post('/api/users', (req, res) => {
+  let stripeToken = req.body.stripeInfo.id
+
   let user = {
     email    : req.body.email,
     password : req.body.password,
@@ -77,7 +83,7 @@ app.post('/api/users', (req, res) => {
       Stripe.customers.create({
         description: `Customer for ${user.email}`,
         plan: "react-tv-monthly",
-        source: "tok_7cAwM7W02qD5V1" // obtained with Stripe.js
+        source: stripeToken // obtained with Stripe.js
       }, function(err, customer) {
         console.log("err", err)
         updateProfile(user, customer)
