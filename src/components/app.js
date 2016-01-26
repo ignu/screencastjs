@@ -15,14 +15,14 @@ class App extends Component {
 
   renderAuthButtons() {
     if (this.props.userId) {
-      return <div>
+      return <div id="nav">
         <Link to="/videos">Videos</Link>
         <Link to="/account">Account</Link>
 
         <button onClick={this.logOut.bind(this)}>Log Out</button>
       </div>
     } else {
-      return <div>
+      return <div id="nav">
           <Link to="/videos">Videos</Link>
           <Link to="/login">Log In</Link>
           <Link to="/register" className="button button-primary">Sign Up</Link>
@@ -33,7 +33,6 @@ class App extends Component {
   render() {
     return <div className="wrapper">
         <header id="header" className="row">
-
           <Link to="/"><img id="logo" src="/images/reactcasts-logo.png" alt="ReactCasts.tv"/></Link>
 
           { this.renderAuthButtons() }
@@ -42,7 +41,7 @@ class App extends Component {
       <div>{ this.props.children }</div>
 
       <footer>
-      <div>follow me <a target="_blank" href="http://twitter.com/ignu">@ignu</a></div>
+        <div>follow me <a target="_blank" href="http://twitter.com/ignu">@ignu</a></div>
       </footer>
 
       </div>

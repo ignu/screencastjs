@@ -8,18 +8,19 @@ import Error from './error'
 import videoStore from '../stores/video_store'
 import Spinner from 'react-spinner'
 
-console.log("Error", Error)
 class LoginForm extends React.Component {
   static contextTypes = {
     store: React.PropTypes.object
   }
 
   submit(e) {
-    e.preventDefault()
+    e.preventDefault();
+
     let json = {
       email: this.refs.email.value,
-      password: this.refs.password.value,
-    }
+      password: this.refs.password.value
+    };
+
     this.context.store.dispatch(loginUser(json))
   }
 
@@ -33,13 +34,11 @@ class LoginForm extends React.Component {
 
   renderErrors() {
     return this.props.errors.map((e) => {
-      console.warn(e, "<<<<< ERROR")
       return <Error message={e}/>
     })
   }
 
   render() {
-    console.log("this.props", this.props)
     return <div className="wrapper">
       <h3>Login to ReactCasts.tv</h3>
 

@@ -128,6 +128,6 @@ export function saveUser(user) {
           dispatch(postComplete(json))
           history.replaceState(null, '/')
         }
-      })
+      });
   }
 }

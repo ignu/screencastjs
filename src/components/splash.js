@@ -27,14 +27,15 @@ class Splash extends Component {
   render() {
     return <div>
       <div className="blurb">
-        The React ecosystem evolves at a rapid pace. <Link to="/register">Sign up for ReactCasts today</Link> for $7.99 amonth to keep up with the latest in React, React Native and JavaScript libraries with two short videos a week.
+        The React ecosystem evolves at a rapid pace. <Link to="/register">Sign up for ReactCasts today</Link> for $7.99 a month to keep up with the latest in React, React Native and JavaScript libraries.
       </div>
 
-      <h5>Latest Video:</h5>
+      <h3>Latest Video:</h3>
 
       { this.renderVideo() }
 
       <Link to="/videos">View all Videos...</Link>
+
     </div>
   }
 }
