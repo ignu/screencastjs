@@ -46,7 +46,7 @@ class Video extends React.Component {
       </div>
 
       <div>
-      { videoHtml }
+        { videoHtml }
       </div>
 
       { downloadLink }

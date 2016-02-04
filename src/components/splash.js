@@ -46,7 +46,7 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    video: state.videos[0],
+    video: state.videos[state.videos.length -1],
     loggedIn: !!state.userId
   }
 }
