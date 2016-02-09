@@ -10,11 +10,13 @@ import SignUpForm from '../src/components/sign_up_form'
 import LoginForm from '../src/components/login_form'
 import Account from '../src/components/account'
 import { Router, Route, IndexRoute } from 'react-router'
+import GoogleAnalytics from 'react-g-analytics'
 
 render((
     <Provider store={ videoStore }>
       <Router history={ history }>
         <Route path="/" component={ App }>
+          <GoogleAnalytics id="UA-73556814-1" />
           <IndexRoute component={ Splash } />
 
           <Route path="videos" component={ VideoListLoader } >
