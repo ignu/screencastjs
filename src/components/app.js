@@ -41,7 +41,7 @@ class App extends Component {
       <div>{ this.props.children }</div>
 
       <footer>
-        <div>follow me <a target="_blank" href="http://twitter.com/ignu">@ignu</a></div>
+        <div>follow me <a target="_blank" href="https://twitter.com/ignu">@ignu</a></div>
       </footer>
 
       </div>
